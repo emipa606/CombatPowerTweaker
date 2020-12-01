@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>cda63dfa-8047-49d7-9eb3-1b5b1ae70ef2</ID>
   <ModName>Combat Power Tweaker</ModName>
-  <Version>1.0.0.0</Version>
+  <Version>1.0.1.0</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>
@@ -12,7 +12,3 @@
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
-
-
-
-

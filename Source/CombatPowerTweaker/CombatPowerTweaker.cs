@@ -15,16 +15,12 @@ namespace CombatPowerTweaker
             var changedDefs = 0;
             foreach (var pawnKind in DefDatabase<PawnKindDef>.AllDefsListForReading)
             {
-                if (!CombatPowerTweakerMod.settings.modifiedStats.ContainsKey(pawnKind.defName))
-                {
-                    continue;
-                }
-                if (CombatPowerTweakerMod.settings.modifiedStats[pawnKind.defName] == CombatPowerTweakerMod.settings.vanillaMemory[pawnKind.defName])
+                changedDefs++;
+                if (!CombatPowerTweakerMod.settings.modifiedStats.ContainsKey(pawnKind.defName) || CombatPowerTweakerMod.settings.modifiedStats[pawnKind.defName] == CombatPowerTweakerMod.settings.vanillaMemory[pawnKind.defName])
                 {
                     continue;
                 }
                 pawnKind.combatPower = CombatPowerTweakerMod.settings.modifiedStats[pawnKind.defName];
-                changedDefs++;
             }
             if (changedDefs > 0)
             {
