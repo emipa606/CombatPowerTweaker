@@ -14,13 +14,13 @@ namespace CombatPowerTweaker
 
         public Dictionary<string, float> modifiedStats = new Dictionary<string, float>();
 
-        public Dictionary<string, string> pawnKindNames = new Dictionary<string, string>();
-
-        public Dictionary<string, float> vanillaMemory = new Dictionary<string, float>();
-
         private List<string> modifiedStatsKeys;
 
         private List<float> modifiedStatsValues;
+
+        public Dictionary<string, string> pawnKindNames = new Dictionary<string, string>();
+
+        public Dictionary<string, float> vanillaMemory = new Dictionary<string, float>();
 
         public void DoSettingsWindowContents(Rect inRect)
         {
@@ -44,7 +44,8 @@ namespace CombatPowerTweaker
             {
                 foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
                 {
-                    CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] * 1.1f;
+                    CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] =
+                        CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] * 1.1f;
                     if (CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] > maxValue)
                     {
                         CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = maxValue;
@@ -56,14 +57,17 @@ namespace CombatPowerTweaker
             {
                 foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
                 {
-                    CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] * 0.9f;
+                    CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] =
+                        CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] * 0.9f;
                 }
             }
 
             for (var num = keys.Count - 1; num >= 0; num--)
             {
                 var test = modifiedStats[keys[num]];
-                listingStandard.AddLabeledSlider($"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]})", ref test, 1f, maxValue, test.ToString(), null, 1);
+                listingStandard.AddLabeledSlider(
+                    $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]})", ref test, 1f,
+                    maxValue, test.ToString(), null, 1);
                 modifiedStats[keys[num]] = test;
             }
 
@@ -75,7 +79,8 @@ namespace CombatPowerTweaker
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look(ref modifiedStats, "modifiedStats", LookMode.Value, LookMode.Value, ref modifiedStatsKeys, ref modifiedStatsValues);
+            Scribe_Collections.Look(ref modifiedStats, "modifiedStats", LookMode.Value, LookMode.Value,
+                ref modifiedStatsKeys, ref modifiedStatsValues);
         }
     }
 }

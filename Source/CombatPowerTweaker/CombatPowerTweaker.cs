@@ -20,7 +20,9 @@ namespace CombatPowerTweaker
             foreach (var pawnKind in DefDatabase<PawnKindDef>.AllDefsListForReading)
             {
                 changedDefs++;
-                if (!CombatPowerTweakerMod.Settings.modifiedStats.ContainsKey(pawnKind.defName) || CombatPowerTweakerMod.Settings.modifiedStats[pawnKind.defName] == CombatPowerTweakerMod.Settings.vanillaMemory[pawnKind.defName])
+                if (!CombatPowerTweakerMod.Settings.modifiedStats.ContainsKey(pawnKind.defName) ||
+                    CombatPowerTweakerMod.Settings.modifiedStats[pawnKind.defName] ==
+                    CombatPowerTweakerMod.Settings.vanillaMemory[pawnKind.defName])
                 {
                     continue;
                 }
@@ -36,7 +38,9 @@ namespace CombatPowerTweaker
 
         private static void SettingsInit()
         {
-            var thingsWithCombatPower = from PawnKindDef pawnKindDef in DefDatabase<PawnKindDef>.AllDefsListForReading orderby pawnKindDef.label select pawnKindDef;
+            var thingsWithCombatPower = from PawnKindDef pawnKindDef in DefDatabase<PawnKindDef>.AllDefsListForReading
+                orderby pawnKindDef.label
+                select pawnKindDef;
 
             if (CombatPowerTweakerMod.Settings.modifiedStats == null)
             {

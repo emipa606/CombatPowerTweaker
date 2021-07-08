@@ -18,7 +18,8 @@ namespace CombatPowerTweaker
             {
                 if (settings == null)
                 {
-                    settings = LoadedModManager.GetMod<CombatPowerTweakerMod>().GetSettings<CombatPowerTweakerSettings>();
+                    settings = LoadedModManager.GetMod<CombatPowerTweakerMod>()
+                        .GetSettings<CombatPowerTweakerSettings>();
                 }
 
                 return settings;
