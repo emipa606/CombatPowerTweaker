@@ -1,10 +1,10 @@
 # CombatPowerTweaker
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 
 This mod lets you modify the combat power of all pawn-kinds.
-The combat power is what a pawn &quot;costs&quot; when a raid is created, so a lower cost means more units.
+The combat power is what a pawn "costs" when a raid is created, so a lower cost means more units.
 So dont lower the Centipiedes value to 1 unless you want a real challenge :)
 
 Commisioned by: https://steamcommunity.com/profiles/76561198068907991]u w u
@@ -21,7 +21,14 @@ Recoded by: Mlie
 [/table]
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/O0IIlYj.png)
+
+Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my https://store.steampowered.com/wishlist/id/Mlie]Wishlist or buy me a cup of tea.
+
+https://ko-fi.com/G2G55DDYD]![Image](https://i.ibb.co/VWJJb3w/Support-Me-dark-2x.png)
+
+
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
@@ -31,7 +38,6 @@ Recoded by: Mlie
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
-
 
 
 

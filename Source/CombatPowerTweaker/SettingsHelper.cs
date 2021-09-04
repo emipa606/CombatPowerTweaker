@@ -12,7 +12,7 @@ namespace RaidValueTweaker
         {
             float num = val;
             ls.SliderLabeled(label, ref num, format, min, max, tooltip);
-            val = (int) num;
+            val = (int)num;
         }
 
         // Token: 0x06000028 RID: 40 RVA: 0x0000377C File Offset: 0x0000197C

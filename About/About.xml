@@ -8,10 +8,10 @@
     <li>1.2</li>
     <li>1.3</li>
   </supportedVersions>
-  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 
 This mod lets you modify the combat power of all pawn-kinds.
-The combat power is what a pawn &quot;costs&quot; when a raid is created, so a lower cost means more units.
+The combat power is what a pawn "costs" when a raid is created, so a lower cost means more units.
 So dont lower the Centipiedes value to 1 unless you want a real challenge :)
 
 Commisioned by: [url=https://steamcommunity.com/profiles/76561198068907991]u w u[/url]
@@ -26,7 +26,12 @@ Recoded by: Mlie
 [/table]
 
 
-[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[img]https://i.imgur.com/O0IIlYj.png[/img]
+Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my [url=https://store.steampowered.com/wishlist/id/Mlie]Wishlist[/url] or buy me a cup of tea.
+
+[url=https://ko-fi.com/G2G55DDYD][img]https://i.ibb.co/VWJJb3w/Support-Me-dark-2x.png[/img][/url]
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -35,6 +40,5 @@ Recoded by: Mlie
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-
 </description>
 </ModMetaData>
