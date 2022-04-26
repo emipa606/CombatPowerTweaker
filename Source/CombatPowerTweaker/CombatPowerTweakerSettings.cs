@@ -30,8 +30,8 @@ internal class CombatPowerTweakerSettings : ModSettings
     {
         var listingStandard = new Listing_Standard();
         listingStandard.Begin(inRect);
-        listingStandard.Label("Combat power, vanilla value in parenthesis");
-        if (listingStandard.ButtonTextLabeled("Reset all to vanilla", "Reset"))
+        listingStandard.Label("CPT.combatpower.label".Translate());
+        if (listingStandard.ButtonTextLabeled("CPT.reset.label".Translate(), "CPT.reset.button".Translate()))
         {
             foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
             {
@@ -39,7 +39,7 @@ internal class CombatPowerTweakerSettings : ModSettings
             }
         }
 
-        if (listingStandard.ButtonTextLabeled("Increase all values by 10%", "+10%"))
+        if (listingStandard.ButtonTextLabeled("CPT.percentup.label".Translate(), "CPT.percentup.button".Translate()))
         {
             foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
             {
@@ -51,7 +51,8 @@ internal class CombatPowerTweakerSettings : ModSettings
             }
         }
 
-        if (listingStandard.ButtonTextLabeled("Decrease all values by 10%", "-10%"))
+        if (listingStandard.ButtonTextLabeled("CPT.percentdown.label".Translate(),
+                "CPT.percentdown.button".Translate()))
         {
             foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
             {
@@ -59,7 +60,7 @@ internal class CombatPowerTweakerSettings : ModSettings
             }
         }
 
-        var searchLabel = listingStandard.Label("Search");
+        var searchLabel = listingStandard.Label("CPT.search.label".Translate());
         searchText =
             Widgets.TextField(
                 new Rect(searchLabel.position + new Vector2((inRect.width / 3 * 2) - (searchSize.x / 3 * 2), 0),
@@ -67,7 +68,7 @@ internal class CombatPowerTweakerSettings : ModSettings
                 searchText);
         TooltipHandler.TipRegion(new Rect(
             searchLabel.position + new Vector2((inRect.width / 2) - (searchSize.x / 2), 0),
-            searchSize), "Search");
+            searchSize), "CPT.search.label".Translate());
         var keys = modifiedStats.Keys.ToList();
         if (!string.IsNullOrEmpty(searchText))
         {
