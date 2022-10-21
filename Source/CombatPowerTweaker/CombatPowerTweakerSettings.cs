@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SettingsHelper;
 using UnityEngine;
 using Verse;
 
@@ -37,6 +36,14 @@ internal class CombatPowerTweakerSettings : ModSettings
             {
                 CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = keyValue.Value;
             }
+        }
+
+        if (CombatPowerTweakerMod.currentVersion != null)
+        {
+            listingStandard.Gap();
+            GUI.contentColor = Color.gray;
+            listingStandard.Label("CPT.modversion.label".Translate(CombatPowerTweakerMod.currentVersion));
+            GUI.contentColor = Color.white;
         }
 
         if (listingStandard.ButtonTextLabeled("CPT.percentup.label".Translate(), "CPT.percentup.button".Translate()))
@@ -80,18 +87,18 @@ internal class CombatPowerTweakerSettings : ModSettings
         listingStandard.End();
 
         keys.Reverse();
-        var rect = new Rect(inRect.x, inRect.y + 160f, inRect.width, inRect.height - 160f);
+        var rect = new Rect(inRect.x, searchLabel.position.y + 80f, inRect.width,
+            inRect.height - (searchLabel.position.y + 80f));
         var rect2 = new Rect(0f, 0f, inRect.width - 30f, keys.Count * 35);
         Widgets.BeginScrollView(rect, ref scrollPosition, rect2);
         var listingScroll = new Listing_Standard();
         listingScroll.Begin(rect2);
         for (var num = keys.Count - 1; num >= 0; num--)
         {
-            var test = modifiedStats[keys[num]];
-            listingScroll.AddLabeledSlider(
-                $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]})", ref test, 1f,
-                maxValue, test.ToString(), null, 1);
-            modifiedStats[keys[num]] = test;
+            modifiedStats[keys[num]] = listingScroll.SliderLabeled(
+                $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]})", modifiedStats[keys[num]],
+                1f,
+                maxValue, 0.5f, modifiedStats[keys[num]].ToString());
         }
 
         listingScroll.End();

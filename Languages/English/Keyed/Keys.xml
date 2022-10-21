@@ -8,4 +8,5 @@
   <CPT.percentdown.label>Decrease all values by 10%</CPT.percentdown.label>
   <CPT.percentdown.button>-10%</CPT.percentdown.button>
   <CPT.search.label>Search</CPT.search.label>
+  <CPT.modversion.label>Installed mod-version: {0}</CPT.modversion.label>
 </LanguageData>

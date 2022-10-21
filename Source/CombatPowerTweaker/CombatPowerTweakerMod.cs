@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Mlie;
+using UnityEngine;
 using Verse;
 
 namespace CombatPowerTweaker;
@@ -6,10 +7,14 @@ namespace CombatPowerTweaker;
 internal class CombatPowerTweakerMod : Mod
 {
     private static CombatPowerTweakerSettings settings;
+    public static string currentVersion;
 
     public CombatPowerTweakerMod(ModContentPack pack)
         : base(pack)
     {
+        currentVersion =
+            VersionFromManifest.GetVersionFromModMetaData(
+                ModLister.GetActiveModWithIdentifier("Mlie.CombatPowerTweaker"));
     }
 
     public static CombatPowerTweakerSettings Settings
