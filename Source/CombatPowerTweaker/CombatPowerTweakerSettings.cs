@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -96,7 +97,8 @@ internal class CombatPowerTweakerSettings : ModSettings
         for (var num = keys.Count - 1; num >= 0; num--)
         {
             modifiedStats[keys[num]] = listingScroll.SliderLabeled(
-                $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]})", modifiedStats[keys[num]],
+                $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]}): {Math.Round(modifiedStats[keys[num]])}",
+                modifiedStats[keys[num]],
                 1f,
                 maxValue, 0.5f, modifiedStats[keys[num]].ToString());
         }

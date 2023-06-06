@@ -13,8 +13,7 @@ internal class CombatPowerTweakerMod : Mod
         : base(pack)
     {
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.CombatPowerTweaker"));
+            VersionFromManifest.GetVersionFromModMetaData(pack.ModMetaData);
     }
 
     public static CombatPowerTweakerSettings Settings

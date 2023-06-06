@@ -1,5 +1,8 @@
 # Changelog for CombatPowerTweaker
 
+1.4.2 - Made the value-change a bit more clear
+
+
 1.4.1 - Mod updated for 1.4 and passed autotests.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 
