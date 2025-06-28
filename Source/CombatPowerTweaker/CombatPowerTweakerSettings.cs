@@ -8,23 +8,23 @@ namespace CombatPowerTweaker;
 
 internal class CombatPowerTweakerSettings : ModSettings
 {
-    private static readonly float maxValue = 2000f;
+    private const float MaxValue = 2000f;
 
     private static Vector2 scrollPosition = Vector2.zero;
 
-    private static readonly Vector2 searchSize = new Vector2(200f, 25f);
+    private static readonly Vector2 searchSize = new(200f, 25f);
 
-    public Dictionary<string, float> modifiedStats = new Dictionary<string, float>();
+    public Dictionary<string, float> ModifiedStats = new();
 
     private List<string> modifiedStatsKeys;
 
     private List<float> modifiedStatsValues;
 
-    public Dictionary<string, string> pawnKindNames = new Dictionary<string, string>();
+    public Dictionary<string, string> PawnKindNames = new();
 
     private string searchText = "";
 
-    public Dictionary<string, float> vanillaMemory = new Dictionary<string, float>();
+    public Dictionary<string, float> VanillaMemory = new();
 
     public void DoSettingsWindowContents(Rect inRect)
     {
@@ -33,28 +33,28 @@ internal class CombatPowerTweakerSettings : ModSettings
         listingStandard.Label("CPT.combatpower.label".Translate());
         if (listingStandard.ButtonTextLabeled("CPT.reset.label".Translate(), "CPT.reset.button".Translate()))
         {
-            foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
+            foreach (var keyValue in CombatPowerTweakerMod.Settings.VanillaMemory)
             {
-                CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = keyValue.Value;
+                CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] = keyValue.Value;
             }
         }
 
-        if (CombatPowerTweakerMod.currentVersion != null)
+        if (CombatPowerTweakerMod.CurrentVersion != null)
         {
             listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listingStandard.Label("CPT.modversion.label".Translate(CombatPowerTweakerMod.currentVersion));
+            listingStandard.Label("CPT.modversion.label".Translate(CombatPowerTweakerMod.CurrentVersion));
             GUI.contentColor = Color.white;
         }
 
         if (listingStandard.ButtonTextLabeled("CPT.percentup.label".Translate(), "CPT.percentup.button".Translate()))
         {
-            foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
+            foreach (var keyValue in CombatPowerTweakerMod.Settings.VanillaMemory)
             {
-                CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] *= 1.1f;
-                if (CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] > maxValue)
+                CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] *= 1.1f;
+                if (CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] > MaxValue)
                 {
-                    CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] = maxValue;
+                    CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] = MaxValue;
                 }
             }
         }
@@ -62,9 +62,9 @@ internal class CombatPowerTweakerSettings : ModSettings
         if (listingStandard.ButtonTextLabeled("CPT.percentdown.label".Translate(),
                 "CPT.percentdown.button".Translate()))
         {
-            foreach (var keyValue in CombatPowerTweakerMod.Settings.vanillaMemory)
+            foreach (var keyValue in CombatPowerTweakerMod.Settings.VanillaMemory)
             {
-                CombatPowerTweakerMod.Settings.modifiedStats[keyValue.Key] *= 0.9f;
+                CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] *= 0.9f;
             }
         }
 
@@ -77,7 +77,7 @@ internal class CombatPowerTweakerSettings : ModSettings
         TooltipHandler.TipRegion(new Rect(
             searchLabel.position + new Vector2((inRect.width / 2) - (searchSize.x / 2), 0),
             searchSize), "CPT.search.label".Translate());
-        var keys = modifiedStats.Keys.ToList();
+        var keys = ModifiedStats.Keys.ToList();
         if (!string.IsNullOrEmpty(searchText))
         {
             keys = keys.Where(s => s.ToLower().Contains(searchText.ToLower())).ToList();
@@ -96,11 +96,11 @@ internal class CombatPowerTweakerSettings : ModSettings
         listingScroll.Begin(rect2);
         for (var num = keys.Count - 1; num >= 0; num--)
         {
-            modifiedStats[keys[num]] = listingScroll.SliderLabeled(
-                $"{pawnKindNames[keys[num]].CapitalizeFirst()} ({vanillaMemory[keys[num]]}): {Math.Round(modifiedStats[keys[num]])}",
-                modifiedStats[keys[num]],
+            ModifiedStats[keys[num]] = listingScroll.SliderLabeled(
+                $"{PawnKindNames[keys[num]].CapitalizeFirst()} ({VanillaMemory[keys[num]]}): {Math.Round(ModifiedStats[keys[num]])}",
+                ModifiedStats[keys[num]],
                 1f,
-                maxValue, 0.5f, modifiedStats[keys[num]].ToString());
+                MaxValue, 0.5f, ModifiedStats[keys[num]].ToString());
         }
 
         listingScroll.End();
@@ -111,7 +111,7 @@ internal class CombatPowerTweakerSettings : ModSettings
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Collections.Look(ref modifiedStats, "modifiedStats", LookMode.Value, LookMode.Value,
+        Scribe_Collections.Look(ref ModifiedStats, "modifiedStats", LookMode.Value, LookMode.Value,
             ref modifiedStatsKeys, ref modifiedStatsValues);
     }
 }

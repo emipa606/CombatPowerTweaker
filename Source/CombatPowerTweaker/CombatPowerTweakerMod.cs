@@ -7,12 +7,12 @@ namespace CombatPowerTweaker;
 internal class CombatPowerTweakerMod : Mod
 {
     private static CombatPowerTweakerSettings settings;
-    public static string currentVersion;
+    public static string CurrentVersion;
 
     public CombatPowerTweakerMod(ModContentPack pack)
         : base(pack)
     {
-        currentVersion =
+        CurrentVersion =
             VersionFromManifest.GetVersionFromModMetaData(pack.ModMetaData);
     }
 
@@ -20,11 +20,8 @@ internal class CombatPowerTweakerMod : Mod
     {
         get
         {
-            if (settings == null)
-            {
-                settings = LoadedModManager.GetMod<CombatPowerTweakerMod>()
-                    .GetSettings<CombatPowerTweakerSettings>();
-            }
+            settings ??= LoadedModManager.GetMod<CombatPowerTweakerMod>()
+                .GetSettings<CombatPowerTweakerSettings>();
 
             return settings;
         }

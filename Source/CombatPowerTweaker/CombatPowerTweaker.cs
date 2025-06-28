@@ -9,7 +9,7 @@ internal static class CombatPowerTweaker
 {
     static CombatPowerTweaker()
     {
-        SettingsInit();
+        settingsInit();
         SetCombatPowerValues();
     }
 
@@ -20,14 +20,14 @@ internal static class CombatPowerTweaker
         foreach (var pawnKind in DefDatabase<PawnKindDef>.AllDefsListForReading)
         {
             changedDefs++;
-            if (!CombatPowerTweakerMod.Settings.modifiedStats.ContainsKey(pawnKind.defName) ||
-                CombatPowerTweakerMod.Settings.modifiedStats[pawnKind.defName] ==
-                CombatPowerTweakerMod.Settings.vanillaMemory[pawnKind.defName])
+            if (!CombatPowerTweakerMod.Settings.ModifiedStats.ContainsKey(pawnKind.defName) ||
+                CombatPowerTweakerMod.Settings.ModifiedStats[pawnKind.defName] ==
+                CombatPowerTweakerMod.Settings.VanillaMemory[pawnKind.defName])
             {
                 continue;
             }
 
-            pawnKind.combatPower = CombatPowerTweakerMod.Settings.modifiedStats[pawnKind.defName];
+            pawnKind.combatPower = CombatPowerTweakerMod.Settings.ModifiedStats[pawnKind.defName];
         }
 
         if (changedDefs > 0)
@@ -36,34 +36,34 @@ internal static class CombatPowerTweaker
         }
     }
 
-    private static void SettingsInit()
+    private static void settingsInit()
     {
         var thingsWithCombatPower = from PawnKindDef pawnKindDef in DefDatabase<PawnKindDef>.AllDefsListForReading
             orderby pawnKindDef.label
             select pawnKindDef;
 
-        if (CombatPowerTweakerMod.Settings.modifiedStats == null)
+        if (CombatPowerTweakerMod.Settings.ModifiedStats == null)
         {
-            CombatPowerTweakerMod.Settings.modifiedStats = new Dictionary<string, float>();
+            CombatPowerTweakerMod.Settings.ModifiedStats = new Dictionary<string, float>();
         }
         else
         {
-            CombatPowerTweakerMod.Settings.modifiedStats.RemoveAll(pair =>
+            CombatPowerTweakerMod.Settings.ModifiedStats.RemoveAll(pair =>
                 DefDatabase<PawnKindDef>.GetNamedSilentFail(pair.Key) == null);
         }
 
-        CombatPowerTweakerMod.Settings.vanillaMemory = new Dictionary<string, float>();
-        CombatPowerTweakerMod.Settings.pawnKindNames = new Dictionary<string, string>();
+        CombatPowerTweakerMod.Settings.VanillaMemory = new Dictionary<string, float>();
+        CombatPowerTweakerMod.Settings.PawnKindNames = new Dictionary<string, string>();
         foreach (var pawnKind in thingsWithCombatPower)
         {
-            CombatPowerTweakerMod.Settings.vanillaMemory[pawnKind.defName] = pawnKind.combatPower;
-            CombatPowerTweakerMod.Settings.pawnKindNames[pawnKind.defName] = pawnKind.label;
-            if (CombatPowerTweakerMod.Settings.modifiedStats.ContainsKey(pawnKind.defName))
+            CombatPowerTweakerMod.Settings.VanillaMemory[pawnKind.defName] = pawnKind.combatPower;
+            CombatPowerTweakerMod.Settings.PawnKindNames[pawnKind.defName] = pawnKind.label;
+            if (CombatPowerTweakerMod.Settings.ModifiedStats.ContainsKey(pawnKind.defName))
             {
                 continue;
             }
 
-            CombatPowerTweakerMod.Settings.modifiedStats[pawnKind.defName] = pawnKind.combatPower;
+            CombatPowerTweakerMod.Settings.ModifiedStats[pawnKind.defName] = pawnKind.combatPower;
         }
     }
 }
