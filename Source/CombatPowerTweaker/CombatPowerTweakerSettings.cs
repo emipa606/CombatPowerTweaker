@@ -16,15 +16,15 @@ internal class CombatPowerTweakerSettings : ModSettings
 
     public Dictionary<string, float> ModifiedStats = new();
 
+    public Dictionary<string, string> PawnKindNames = new();
+
+    public Dictionary<string, float> VanillaMemory = new();
+
     private List<string> modifiedStatsKeys;
 
     private List<float> modifiedStatsValues;
 
-    public Dictionary<string, string> PawnKindNames = new();
-
     private string searchText = "";
-
-    public Dictionary<string, float> VanillaMemory = new();
 
     public void DoSettingsWindowContents(Rect inRect)
     {
@@ -49,12 +49,12 @@ internal class CombatPowerTweakerSettings : ModSettings
 
         if (listingStandard.ButtonTextLabeled("CPT.percentup.label".Translate(), "CPT.percentup.button".Translate()))
         {
-            foreach (var keyValue in CombatPowerTweakerMod.Settings.VanillaMemory)
+            foreach (var key in CombatPowerTweakerMod.Settings.VanillaMemory.Select(kvp => kvp.Key))
             {
-                CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] *= 1.1f;
-                if (CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] > MaxValue)
+                CombatPowerTweakerMod.Settings.ModifiedStats[key] *= 1.1f;
+                if (CombatPowerTweakerMod.Settings.ModifiedStats[key] > MaxValue)
                 {
-                    CombatPowerTweakerMod.Settings.ModifiedStats[keyValue.Key] = MaxValue;
+                    CombatPowerTweakerMod.Settings.ModifiedStats[key] = MaxValue;
                 }
             }
         }
